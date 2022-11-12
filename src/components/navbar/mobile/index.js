@@ -9,6 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MiranteLogo from '../../../resources/tigre-logo.svg'
 import  '../style.css'
+import { Grid } from '@mui/material';
 
 const MobileNavBar = ({
   menuItems,
@@ -22,8 +23,8 @@ const MobileNavBar = ({
 }) => {
 
   return (
-    <>
-      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+    <Grid container sx={{display: { xs: 'flex', md: 'none' } }}>
+      <Grid item xs={5} sx={{display: 'flex' }}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -49,7 +50,7 @@ const MobileNavBar = ({
           open={Boolean(mobileMenuVisibility)}
           onClose={handleCloseMobileMenu}
           sx={{
-            display: { xs: 'block', md: 'none' },
+            display: 'flex',
           }}
         >
           {menuItems.map((menuItem) => (
@@ -58,20 +59,20 @@ const MobileNavBar = ({
             </MenuItem>
           ))}
         </Menu>
-      </Box>
-      <Box 
+      </Grid>
+      <Grid item xs={2}
         sx={{ 
           justifyContent: 'center',
           flexGrow: 1, 
-          display: { xs: 'flex', md: 'none' }, 
+          display: 'flex', 
         }}      
       >
         <IconButton sx={{ p: 0, position: 'absolute', top: '0.02rem'   }}>              
           <img src={MiranteLogo} height={100} width={100}/>              
         </IconButton>
-      </Box>
+      </Grid>
       
-      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }} >         
+      <Grid item xs={5} sx={{ display: 'flex', justifyContent: 'flex-end' }} >         
         <Tooltip title="Open settings" >
           <IconButton 
             onClick={handleOpenUserMenu} sx={{ p: 0 }}
@@ -104,8 +105,8 @@ const MobileNavBar = ({
               </MenuItem>
             ))}
           </Menu>
-      </Box>     
-    </>
+      </Grid>     
+    </Grid>
   );
 }
 

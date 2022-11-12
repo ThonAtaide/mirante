@@ -9,6 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MiranteLogo from '../../../resources/tigre-logo.svg'
 import  '../style.css'
+import { Grid } from '@mui/material';
 
 const DesktopNavBar = ({ 
   leftMenuItems, 
@@ -22,9 +23,9 @@ const DesktopNavBar = ({
 }) => {     
 
     return(
-      <>
-        <Box 
-            sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-around' }}            
+      <Grid container sx={{ display: { xs: 'none', md: 'flex' }}}>
+        <Grid item md={5}
+            sx={{ display: 'flex', justifyContent: 'space-around' }}            
         >
           {leftMenuItems.map((page) => (
             <Button
@@ -35,17 +36,17 @@ const DesktopNavBar = ({
               {buildMenuItem(page)}
             </Button>
           ))}
-        </Box>
-        <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }} >
+        </Grid>
+        <Grid item md={2} sx={{ display: 'flex', justifyContent: 'center' }} >
             <IconButton 
               // onClick={handleOpenUserMenu} 
               sx={{ p: 0, position: 'absolute', top: '4px' }}
             >              
               <img src={MiranteLogo} height={130} width={130}/>              
             </IconButton>
-        </Box>
-        <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' } }}>
-          <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-around' }} >  
+        </Grid>
+        <Grid item md={5} sx={{display: 'flex' }}>
+          <Box sx={{ flexGrow: 2, display: 'flex', justifyContent: 'space-around' }} >  
             {rightMenuItems.map((page) => (
               <Button
                 key={page}
@@ -56,7 +57,7 @@ const DesktopNavBar = ({
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >         
+          <Box sx={{ flexGrow: 1, display: 'flex' }} >         
             <Tooltip title="Open settings" >
               <IconButton 
                 onClick={handleOpenUserMenu}
@@ -90,8 +91,8 @@ const DesktopNavBar = ({
               ))}
             </Menu>
           </Box>     
-        </Box>
-      </>
+        </Grid>
+      </Grid>
     );
 } 
 

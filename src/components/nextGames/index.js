@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 import '@fontsource/inter'
 import '@fontsource/roboto'
 
@@ -58,43 +59,42 @@ const NextGame = ({ games }) => {
 
   return(
     <Container maxWidth="xl" disableGutters sx={{ bgcolor: '#f5f5f5', mt: '4rem'}}>
+      
       <Box >
-        {buildText('Próxima Partida', 'body2')}
+        {buildText('Próximas partida', 'body2')}
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         {buildText(appendLocalDateTimeAndCup(gamesHistory[currentGameIndex]), 'body2')}
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', flexGrow: 2 }} >
+      <Grid container>
+        <Grid item xs={1} sm={3} sx={{ display: 'flex', justifyContent: 'flex-end' }} >
           <IconButton 
             onClick={() => changeGame(-1)}
             sx={{ p: 0 }}
           >
             <ArrowBackIosIcon fontSize='small'/>
           </IconButton>
-        </Box>
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+        </Grid>
+        <Grid item xs={4} sm={2} sx={{ display: 'flex' }}>
           {buildText(gamesHistory[currentGameIndex].principal, 'body2')}
-          {/* {buildText(1, 'body2')} */}
-        </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
+        </Grid>
+        <Grid item xs={2} sm={2} sx={{ display: 'flex', justifyContent: 'center'}}>
           {buildText(gamesHistory[currentGameIndex].principal_score, 'body2')}
           {buildText('X', 'body2')}
           {buildText(gamesHistory[currentGameIndex].visitor_score, 'body2')}
-        </Box>
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+        </Grid>
+        <Grid item xs={4} sm={2} sx={{ display: 'flex' }}>
           {buildText(gamesHistory[currentGameIndex].visitor, 'body2')}
-        </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-start', flexGrow: 2 }}>
-        <IconButton 
-          onClick={() => changeGame(1)} 
-          sx={{ p: 0 }}
-        >
-          <ArrowForwardIosIcon fontSize='small' />
-        </IconButton>
-          
-        </Box>
-      </Box>
+        </Grid>
+        <Grid item xs={1} sm={3} sx={{ display: 'flex', justifyContent: 'flex-start'}}>
+          <IconButton 
+            onClick={() => changeGame(1)} 
+            sx={{ p: 0 }}
+          >
+            <ArrowForwardIosIcon fontSize='small' />
+          </IconButton>          
+        </Grid>
+      </Grid>
     </Container>
      
   );
