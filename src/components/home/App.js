@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import logo from '../../logo.svg';
 import Navbar from '../navbar';
 import './App.css';
@@ -8,15 +9,17 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import NextGame from '../nextGames';
 import { nextGames } from '../../utils/mocked-data'
+import NewsPage from '../news';
 
 
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
       {/* <div className="App"> */}      
-      <Container maxWidth="xl" disableGutters sx={{ bgcolor: 'green', height: '100vh'}}>
+      <Container maxWidth={false} disableGutters sx={{ bgcolor: 'green'}}>
         <Navbar />
         <NextGame games={nextGames}/>
+        <NewsPage />
         {/* <LoginPage /> */}
 
         

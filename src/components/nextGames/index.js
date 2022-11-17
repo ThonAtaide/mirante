@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import '@fontsource/inter'
 import '@fontsource/roboto'
 
-const buildText = (itemText, variant) => {
+const buildText = (itemText, variant, justifyContent) => {
     return (
         <Typography
             variant={variant}
@@ -24,7 +24,7 @@ const buildText = (itemText, variant) => {
               letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
-              justifyContent: 'center'                       
+              justifyContent: justifyContent || 'center'                       
             }}
           >
             {itemText}
@@ -58,10 +58,9 @@ const NextGame = ({ games }) => {
 
 
   return(
-    <Container maxWidth="xl" disableGutters sx={{ bgcolor: '#f5f5f5', mt: '4rem'}}>
-      
+    <Container maxWidth={false} disableGutters sx={{ bgcolor: '#f5f5f5', mt: '4rem', pb:'0.2em'}}>      
       <Box >
-        {buildText('Próximas partida', 'body2')}
+        {buildText('Próximas partidas', 'body2')}
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         {buildText(appendLocalDateTimeAndCup(gamesHistory[currentGameIndex]), 'body2')}
@@ -75,16 +74,14 @@ const NextGame = ({ games }) => {
             <ArrowBackIosIcon fontSize='small'/>
           </IconButton>
         </Grid>
-        <Grid item xs={4} sm={2} sx={{ display: 'flex' }}>
-          {buildText(gamesHistory[currentGameIndex].principal, 'body2')}
+        <Grid item xs={4} sm={2} sx={{ display: 'flex'}}>
+          {buildText(gamesHistory[currentGameIndex].principal, 'body2', 'flex-end')}
         </Grid>
         <Grid item xs={2} sm={2} sx={{ display: 'flex', justifyContent: 'center'}}>
-          {buildText(gamesHistory[currentGameIndex].principal_score, 'body2')}
           {buildText('X', 'body2')}
-          {buildText(gamesHistory[currentGameIndex].visitor_score, 'body2')}
         </Grid>
         <Grid item xs={4} sm={2} sx={{ display: 'flex' }}>
-          {buildText(gamesHistory[currentGameIndex].visitor, 'body2')}
+          {buildText(gamesHistory[currentGameIndex].visitor, 'body2', 'flex-start')}
         </Grid>
         <Grid item xs={1} sm={3} sx={{ display: 'flex', justifyContent: 'flex-start'}}>
           <IconButton 
@@ -95,8 +92,7 @@ const NextGame = ({ games }) => {
           </IconButton>          
         </Grid>
       </Grid>
-    </Container>
-     
+    </Container>     
   );
 }
 
