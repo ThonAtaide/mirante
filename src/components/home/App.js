@@ -3,7 +3,7 @@ import logo from '../../logo.svg';
 import Navbar from '../navbar';
 import './App.css';
 import { ThemeProvider } from "@mui/material";
-import { appTheme } from "../../themes/theme";
+import { appTheme } from "../../theme";
 import LoginPage from '../login';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';

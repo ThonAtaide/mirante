@@ -20,17 +20,9 @@ const NewsPage = () => {
     return(
       <Container maxWidth="sm" sx={{ mt: '2em' }}>
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: '2em'}}>
-        <Link underline="hover" color="inherit" href="/">
-            Notícias
-        </Link>
-        <Link
-            underline="hover"
-            color="inherit"
-            href="/material-ui/getting-started/installation/"
-        >
-          Core
-        </Link>
-        <Typography color="text.primary">Breadcrumbs</Typography>
+          <Link underline="hover" color="inherit" href="/">
+            <Typography color="text.primary">Notícias</Typography>              
+          </Link>
         </Breadcrumbs>
         <Stack spacing={4}>
           {posts && posts.map(post =>               

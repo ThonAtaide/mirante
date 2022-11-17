@@ -12,13 +12,9 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import teste from '../../../resources/imagem-vitoria.jpg'
 import logo from '../../../resources/tigre-logo.svg'
-// import { makeStyles } from "@material-ui/core/styles";
-// import { makeStyles, useTheme } from '@material-ui/styles';
-// import classNames from "classnames";
+import { useStyles } from '../../../theme'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,13 +27,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const Post = ({title, author, createdDateTime, image_path}) => {
+const Post = ({title, author, createdDateTime, image_path, text}) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  // const classes = useStyles();
+  const classes = useStyles();
   return (
     <Card  >
       <CardHeader sx={{p:'0.5em'}}
@@ -68,19 +64,13 @@ const Post = ({title, author, createdDateTime, image_path}) => {
       />      
       <CardMedia
         component="img"
-        // height="400"
         image={teste}
         alt="Paella dish"
         sx={{ objectFit: 'contain'}}
       />
       <CardContent>
         <Typography variant="body2" color="text.primary">
-          Tem Tigre na próxima fase da Copa São Carlos 2022! 
-          Com uma vitória convincente diante da equipe do Milan no campo do Paulistinha nesta tarde. O Mirante garantiu matematicamente sua vaga nas oitavas da competição. 
-          Mesmo com um time limitado, com poucas trocas a equipe foi sólida defensivamente e precisa nos contra ataques, sacramento o triunfo. 
-          Giovaninho (2) e Douglas fizeram os gols do Tigre! 
-          Mirante 3x0 Milan
-          Na última rodada a equipe enfrenta o Atlético Itamaraty, um simples empate garante a 1° colocação do grupo visando um melhor confronto nas oitavas.
+          {text}          
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -89,15 +79,7 @@ const Post = ({title, author, createdDateTime, image_path}) => {
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
+        </IconButton>  
       </CardActions>
       
     </Card>
@@ -106,39 +88,4 @@ const Post = ({title, author, createdDateTime, image_path}) => {
 
 export default Post;
 
-// const useStyles = makeStyles((theme) => ({
-//   cardHeaderRoot: {
-//     backgroundColor: theme.palette.grey[400]
-//   },
-//   cardHeaderAction: {
-//     margin: "auto"
-//   },
-//   root: {
-//     maxWidth: "100%"
-//   },
-//   media: {
-//     height: 0,
-//     paddingTop: "56.25%" // 16:9
-//   },
-//   expand: {
-//     transform: "rotate(0deg)",
-//     marginLeft: "auto",
-//     transition: theme.transitions.create("transform", {
-//       duration: theme.transitions.duration.shortest
-//     })
-//   },
-//   expandOpen: {
-//     transform: "rotate(180deg)"
-//   },
-//   avatar: {
-//     backgroundColor: red[500]
-//   },
-//   cardHeaderTitleRoot: {
-//     color: theme.palette.error.main,
-//     textAlign: "center"
-//   },
-//   cardHeaderSubTitleRoot: {
-//     color: theme.palette.error.main,
-//     textAlign: "center"
-//   }
-// }));
+
