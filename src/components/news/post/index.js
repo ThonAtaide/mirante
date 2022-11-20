@@ -27,7 +27,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const Post = ({title, author, createdDateTime, image_path, text}) => {
+const Post = ({ createdDateTime, image_path, text}) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -35,7 +35,7 @@ const Post = ({title, author, createdDateTime, image_path, text}) => {
   };
   const classes = useStyles();
   return (
-    <Card  >
+    <Card >
       <CardHeader sx={{p:'0.5em'}}
         avatar={
           <IconButton aria-label="share" sx={{p:'0'}}>
@@ -57,10 +57,10 @@ const Post = ({title, author, createdDateTime, image_path, text}) => {
             {createdDateTime}
           </Typography>
         }
-        // classes={{
-        //   // root: classes.cardHeaderRoot,
-        //   action: classes.cardHeaderAction
-        // }}
+        classes={{
+          // root: classes.cardHeaderRoot,
+          action: classes.cardHeaderAction
+        }}
       />      
       <CardMedia
         component="img"
@@ -70,7 +70,7 @@ const Post = ({title, author, createdDateTime, image_path, text}) => {
       />
       <CardContent>
         <Typography variant="body2" color="text.primary">
-          {text}          
+          {text}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

@@ -10,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import NextGame from '../nextGames';
 import { nextGames } from '../../utils/mocked-data'
 import NewsPage from '../news';
+import { Footer } from '../footer';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Navbar />
         <NextGame games={nextGames}/>
         <NewsPage />
+        <Footer/>
         {/* <LoginPage /> */}
 
         

@@ -4,17 +4,19 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import { useEffect, useState } from 'react';
 import Post from './post';
-import { Box, Grid, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
+import { posts as feed } from '../../utils/mocked-data';
 
 const NewsPage = () => {
 
     const [posts, setPosts] = useState(null);
     
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
-        .then(response => response.json())
-        .then(data => setPosts(data))
-        .catch(err => console.log(`Erro ao charmar posts: ${err}`))        
+      setPosts(feed)
+        // fetch('http://localhost:5000/posts')
+        // .then(response => response.json())
+        // .then(data => setPosts(data))
+        // .catch(err => setPosts())  
     }, []);
 
     return(
@@ -24,12 +26,14 @@ const NewsPage = () => {
             <Typography color="text.primary">Notícias</Typography>              
           </Link>
         </Breadcrumbs>
-        <Stack spacing={4}>
-          {posts && posts.map(post =>               
-            <Post 
+        <Stack  spacing={4}>
+          
+          {posts && posts.map(post =>{               
+            console.log(post)
+            return <Post 
                 {...post}
                 key={post.id}
-            />
+            />}
           )}
         </Stack>            
       </Container>
